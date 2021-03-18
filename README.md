@@ -1,70 +1,234 @@
-# Getting Started with Create React App
+## Made to help me analyze twitch post requests
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+```
+W3siZXZlbnQiOiJtaW51dGUtd2F0Y2hlZCIsInByb3BlcnRpZXMiOnsiYXBwX3Nlc3Npb25faWQiOiI1YjkxNTZiYmIyYTk2OWM1IiwiYXBwX3ZlcnNpb24iOiI5YmMwMWVjZS0xODA5LTQzZTAtOWVhMy1kNzY3ZGRlYzQ4MTYiLCJkZXZpY2VfaWQiOiJ2dVlUVTNBak1jYjF6QXBWR0tWZGo4eE1HS215WE9waiIsImRvbWFpbiI6InR3aXRjaC50diIsImhvc3QiOiJ3d3cudHdpdGNoLnR2IiwicGxhdGZvcm0iOiJ3ZWIiLCJwcmVmZXJyZWRfbGFuZ3VhZ2UiOiJybyIsInJlZmVycmVyX2hvc3QiOiJ3d3cudHdpdGNoLnR2IiwicmVmZXJyZXJfdXJsIjoiIiwicmVjZWl2ZWRfbGFuZ3VhZ2UiOiJmciIsInRhYl9zZXNzaW9uX2lkIjoiYWNhMDA2YWFjODQxNmU0ZSIsImJhdGNoX3RpbWUiOjE2MTYwNzUxNjUsInVybCI6Imh0dHBzOi8vd3d3LnR3aXRjaC50di9wb3N0eSIsImNsaWVudF90aW1lIjoxNjE2MDc1MTY0Ljg1NywiYmVuY2htYXJrX3NlcnZlcl9pZCI6ImVhZjFiZWIxYmQyNDQyMjdiMTg0MTczYjY0ZjhlOTA0IiwiYm9ybnVzZXIiOmZhbHNlLCJicm93c2VyIjoiNS4wIChNYWNpbnRvc2g7IEludGVsIE1hYyBPUyBYIDEwXzE1XzcpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS84OS4wLjQzODkuOTAgU2FmYXJpLzUzNy4zNiIsImJyb3dzZXJfZmFtaWx5IjoiY2hyb21lIiwiYnJvd3Nlcl92ZXJzaW9uIjoiODkuMCIsImNvbGxhcHNlX3JpZ2h0IjpmYWxzZSwiY29sbGFwc2VfbGVmdCI6ZmFsc2UsImxvY2Fsc3RvcmFnZV9kZXZpY2VfaWQiOiJjY2U0YzA2NGU1OTVjNDdkIiwibG9jYXRpb24iOiJjaGFubmVsIiwicGFnZV9zZXNzaW9uX2lkIjoiZTk1ODhkODI1ZTg0ZTEyNyIsInJlZmVycmVyIjoiaHR0cHM6Ly93d3cudHdpdGNoLnR2L2RpcmVjdG9yeS9mb2xsb3dpbmciLCJyZWZlcnJlcl9kb21haW4iOiJ3d3cudHdpdGNoLnR2Iiwic2Vzc2lvbl9kZXZpY2VfaWQiOiJ2dVlUVTNBak1jYjF6QXBWR0tWZGo4eE1HS215WE9waiIsInRoZW1lIjoiZGFyayIsInZpZXdwb3J0X2hlaWdodCI6ODMzLCJ2aWV3cG9ydF93aWR0aCI6MTMwMSwiY29udGVudCI6InZpZGVvX3RpdGxlIiwiY29udGVudF9pbmRleCI6MiwibWVkaXVtIjoiZm9sbG93aW5nX2RpcmVjdG9yeSIsImNoYW5uZWwiOiJwb3N0eSIsImNoYW5uZWxfaWQiOiIxMzUzNzc2ODciLCJnYW1lIjoiUnVzdCIsImhvc3RlZF9nYW1lIjpudWxsLCJpc19mb2xsb3dpbmciOnRydWUsImlzX2xpdmUiOnRydWUsImxhbmd1YWdlIjoiZnIiLCJhdmVyYWdlX2JpdHJhdGUiOjg0NDg4NzgsImJhY2tlbmQiOiJtZWRpYXBsYXllciIsImJyb2FkY2FzdF9pZCI6IjQxMDYxNzg3NTE3IiwiYnVmZmVyX2VtcHR5X2NvdW50IjowLCJjbHVzdGVyIjoiYW1zMDIiLCJjb3JlX3ZlcnNpb24iOiIxLjMuMC10d2l0Y2gud2ViLjEtZTQ3NWY4YTQiLCJjdXJyZW50X2JpdHJhdGUiOjg4ODc2ODYsImN1cnJlbnRfZnBzIjo2MiwiZGVjb2RlZF9mcmFtZXMiOjM2MDMsImRyb3BwZWRfZnJhbWVzIjo1LCJlc3RpbWF0ZWRfYmFuZHdpZHRoIjoyNzk1MDkyODUsImZyYW1lX3ZhcmlhbmNlIjozNDEsImhpZGRlbiI6ZmFsc2UsImhsc19sYXRlbmN5X2Jyb2FkY2FzdGVyIjoxODM2LCJobHNfbGF0ZW5jeV9pbmdlc3QiOjE5MDYsImxpdmUiOnRydWUsImxvd19sYXRlbmN5Ijp0cnVlLCJtYW5pZmVzdF9jbHVzdGVyIjoiYW1zMDIiLCJtYW5pZmVzdF9ub2RlIjoidmlkZW8td2VhdmVyLmFtczAyIiwibWFuaWZlc3Rfbm9kZV90eXBlIjoid2VhdmVyX2NsdXN0ZXIiLCJtaW51dGVzX2xvZ2dlZCI6MTMyLCJtdXRlZCI6ZmFsc2UsIm5vZGUiOiJ2aWRlby1lZGdlLWM2ODRlYy5hbXMwMiIsIm9yaWdpbl9kYyI6ImNtaDAxIiwib3NfbmFtZSI6Im1hY09TIiwib3NfdmVyc2lvbiI6IjEwLjE1LjciLCJwbGF5X3Nlc3Npb25faWQiOiI2MTRjM2UwNzE5YmI4MGU5YzU5MThkN2MwMTBlZTE3MiIsInBsYXliYWNrX3JhdGUiOjEsInBsYXllciI6InNpdGUiLCJwbGF5ZXJfc3RhdGUiOiJQbGF5aW5nIiwicHJvdG9jb2wiOiJITFMiLCJwdGIiOjAsInF1YWxpdHkiOiI5MzZwNjAgKHNvdXJjZSkiLCJyZW5kZXJlZF9mcmFtZXMiOjM1OTgsInNlY29uZHNfb2Zmc2V0Ijo5LjU1ODA5OSwic2VydmluZ19pZCI6Ijg2MDc1NDYzYjI5MTRkYWQ5YzJmYmQ3MzExYWVhYTFhIiwic2lua19idWZmZXJfc2l6ZSI6MS42NTczNDM5ODM2NTAyMDc1LCJzdHJlYW1fZm9ybWF0IjoiY2h1bmtlZCIsInRpbWUiOjE2MTYwNzUxNjQuODQ4LCJ0cmFuc2NvZGVyX3R5cGUiOiIyMDE3VHJhbnNjb2RlUVNfVjIiLCJ0cmFuc3BvcnRfZG93bmxvYWRfYnl0ZXMiOjY1ODc1MjAwLCJ0cmFuc3BvcnRfZG93bmxvYWRfZHVyYXRpb24iOjYwMjQ4LCJ0cmFuc3BvcnRfZmlyc3RfYnl0ZV9sYXRlbmN5Ijo3MzQsInRyYW5zcG9ydF9zZWdtZW50X2R1cmF0aW9uIjo2MjQ4NCwidHJhbnNwb3J0X3NlZ21lbnRzIjoxNSwidXNlcl9hZ2VudCI6Ik1vemlsbGEvNS4wIChNYWNpbnRvc2g7IEludGVsIE1hYyBPUyBYIDEwXzE1XzcpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS84OS4wLjQzODkuOTAgU2FmYXJpLzUzNy4zNiIsInZpZF9kaXNwbGF5X2hlaWdodCI6ODMzLCJ2aWRfZGlzcGxheV93aWR0aCI6MTI2NSwidmlkX2hlaWdodCI6OTM2LCJ2aWRfd2lkdGgiOjE2NjQsInZpZGVvX2J1ZmZlcl9zaXplIjoxLjgwOTY4OCwidmlkZW9fc2Vzc2lvbl9pZCI6IjExMzE0MTg4OTIzMDA3NDk5MTYiLCJ2b2x1bWUiOjAuMzQwMDAwMDAzNTc2Mjc4NywiYmF0dGVyeV9wZXJjZW50IjoxLCJpc19wYnlwIjpmYWxzZSwic3F1YWRfc3RyZWFtX2lkIjpudWxsLCJzcXVhZF9zdHJlYW1fc2Vzc2lvbl9pZCI6bnVsbCwic3F1YWRfc3RyZWFtX3ByZXNlbnRhdGlvbl9pZCI6bnVsbCwiaXNfbW9kIjpmYWxzZSwidGltZV9zcGVudF9oaWRkZW4iOjQ0NTU3NiwiY29uc2VudF9jb21zY29yZV9vayI6dHJ1ZSwiYXBwX2Z1bGxzY3JlZW4iOmZhbHNlLCJhdXRvcGxheWVkIjp0cnVlLCJiYWNrZW5kX3ZlcnNpb24iOiIxLjMuMC10d2l0Y2gud2ViLjEtZTQ3NWY4YTQiLCJicm9hZGNhc3Rlcl9zb2Z0d2FyZSI6InVua25vd25fcnRtcCIsImNhcHRpb25zX2VuYWJsZWQiOmZhbHNlLCJjaGF0X3Zpc2libGUiOnRydWUsImNoYXRfdmlzaWJpbGl0eV9zdGF0dXMiOiJ2aXNpYmxlIiwiY29udGVudF9tb2RlIjoibGl2ZSIsImhvc3RfY2hhbm5lbCI6bnVsbCwiaG9zdF9jaGFubmVsX2lkIjpudWxsLCJpc19hZF9wbGF5aW5nIjpmYWxzZSwibG9nZ2VkX2luIjp0cnVlLCJsb2dpbiI6InAzM3BvIiwibXNlX3N1cHBvcnQiOnRydWUsInBhcnRuZXIiOnRydWUsInBsYXliYWNrX2dhdGVkIjpmYWxzZSwicGxheWVyX3NpemVfbW9kZSI6InRoZWF0cmUgbW9kZSIsInN0YWZmIjpmYWxzZSwic3Vic2NyaWJlciI6dHJ1ZSwidHVyYm8iOmZhbHNlLCJ1c2VyX2lkIjo0NTc0MTM1MDcsInZpZXdlcl9leGVtcHRpb25fcmVhc29uIjpudWxsLCJzdWJzY3JpcHRpb25fdXBzZWxsX3Nob3duIjpmYWxzZSwiYWRfaW1wcmVzc2lvbnNfaW5fY2hhbm5lbF9jYWNoZWQiOjAsImJlbmNobWFya19zZXNzaW9uX2lkIjoiODhjNDlhZDVjYmQwYWQwYyIsImNsaWVudF9idWlsZF9pZCI6IjliYzAxZWNlLTE4MDktNDNlMC05ZWEzLWQ3NjdkZGVjNDgxNiIsImRpc3RpbmN0X2lkIjoidnVZVFUzQWpNY2IxekFwVkdLVmRqOHhNR0tteVhPcGoiLCJjbGllbnRfYXBwIjoidHdpbGlnaHQifX0seyJldmVudCI6ImV4dGVuc2lvbnNfYWN0aXZlX3Blcl9taW51dGVfd2F0Y2hlZCIsInByb3BlcnRpZXMiOnsiYXBwX3Nlc3Npb25faWQiOiI1YjkxNTZiYmIyYTk2OWM1IiwiYXBwX3ZlcnNpb24iOiI5YmMwMWVjZS0xODA5LTQzZTAtOWVhMy1kNzY3ZGRlYzQ4MTYiLCJkZXZpY2VfaWQiOiJ2dVlUVTNBak1jYjF6QXBWR0tWZGo4eE1HS215WE9waiIsImRvbWFpbiI6InR3aXRjaC50diIsImhvc3QiOiJ3d3cudHdpdGNoLnR2IiwicGxhdGZvcm0iOiJ3ZWIiLCJwcmVmZXJyZWRfbGFuZ3VhZ2UiOiJybyIsInJlZmVycmVyX2hvc3QiOiJ3d3cudHdpdGNoLnR2IiwicmVmZXJyZXJfdXJsIjoiIiwicmVjZWl2ZWRfbGFuZ3VhZ2UiOiJmciIsInRhYl9zZXNzaW9uX2lkIjoiYWNhMDA2YWFjODQxNmU0ZSIsImJhdGNoX3RpbWUiOjE2MTYwNzUxNjUsInVybCI6Imh0dHBzOi8vd3d3LnR3aXRjaC50di9wb3N0eSIsImNsaWVudF90aW1lIjoxNjE2MDc1MTY0Ljg1OCwiYmVuY2htYXJrX3NlcnZlcl9pZCI6ImVhZjFiZWIxYmQyNDQyMjdiMTg0MTczYjY0ZjhlOTA0IiwiYm9ybnVzZXIiOmZhbHNlLCJicm93c2VyIjoiNS4wIChNYWNpbnRvc2g7IEludGVsIE1hYyBPUyBYIDEwXzE1XzcpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS84OS4wLjQzODkuOTAgU2FmYXJpLzUzNy4zNiIsImJyb3dzZXJfZmFtaWx5IjoiY2hyb21lIiwiYnJvd3Nlcl92ZXJzaW9uIjoiODkuMCIsImNvbGxhcHNlX3JpZ2h0IjpmYWxzZSwiY29sbGFwc2VfbGVmdCI6ZmFsc2UsImxvY2Fsc3RvcmFnZV9kZXZpY2VfaWQiOiJjY2U0YzA2NGU1OTVjNDdkIiwibG9jYXRpb24iOiJjaGFubmVsIiwicGFnZV9zZXNzaW9uX2lkIjoiZTk1ODhkODI1ZTg0ZTEyNyIsInJlZmVycmVyIjoiaHR0cHM6Ly93d3cudHdpdGNoLnR2L2RpcmVjdG9yeS9mb2xsb3dpbmciLCJyZWZlcnJlcl9kb21haW4iOiJ3d3cudHdpdGNoLnR2Iiwic2Vzc2lvbl9kZXZpY2VfaWQiOiJ2dVlUVTNBak1jYjF6QXBWR0tWZGo4eE1HS215WE9waiIsInRoZW1lIjoiZGFyayIsInZpZXdwb3J0X2hlaWdodCI6ODMzLCJ2aWV3cG9ydF93aWR0aCI6MTMwMSwiY29udGVudCI6InZpZGVvX3RpdGxlIiwiY29udGVudF9pbmRleCI6MiwibWVkaXVtIjoiZm9sbG93aW5nX2RpcmVjdG9yeSIsImNoYW5uZWwiOiJwb3N0eSIsImNoYW5uZWxfaWQiOiIxMzUzNzc2ODciLCJnYW1lIjoiUnVzdCIsImhvc3RlZF9nYW1lIjpudWxsLCJpc19mb2xsb3dpbmciOnRydWUsImlzX2xpdmUiOnRydWUsImxhbmd1YWdlIjoiZnIiLCJhY3RpdmVfZXh0ZW5zaW9ucyI6Ilt7XCJleHRlbnNpb25faWRcIjpcImQ0dXZ0ZmRyMDR1cTZyYW9lbnZqN204NmdkazE2dlwiLFwiZXh0ZW5zaW9uX2FuY2hvclwiOlwiY29tcG9uZW50XCIsXCJleHRlbnNpb25fc2xvdFwiOlwiZXh0ZW5zaW9uLWNvbXBvbmVudC0xXCJ9XSIsImlzX3BieXAiOmZhbHNlLCJzcXVhZF9zdHJlYW1faWQiOm51bGwsInNxdWFkX3N0cmVhbV9zZXNzaW9uX2lkIjpudWxsLCJzcXVhZF9zdHJlYW1fcHJlc2VudGF0aW9uX2lkIjpudWxsLCJhcHBfZnVsbHNjcmVlbiI6ZmFsc2UsImF1dG9wbGF5ZWQiOnRydWUsImJhY2tlbmRfdmVyc2lvbiI6IjEuMy4wLXR3aXRjaC53ZWIuMS1lNDc1ZjhhNCIsImJyb2FkY2FzdF9pZCI6IjQxMDYxNzg3NTE3IiwiYnJvYWRjYXN0ZXJfc29mdHdhcmUiOiJ1bmtub3duX3J0bXAiLCJjYXB0aW9uc19lbmFibGVkIjpmYWxzZSwiY2hhdF92aXNpYmxlIjp0cnVlLCJjaGF0X3Zpc2liaWxpdHlfc3RhdHVzIjoidmlzaWJsZSIsImNvbnRlbnRfbW9kZSI6ImxpdmUiLCJjb3JlX3ZlcnNpb24iOiIxLjMuMC10d2l0Y2gud2ViLjEtZTQ3NWY4YTQiLCJob3N0X2NoYW5uZWwiOm51bGwsImhvc3RfY2hhbm5lbF9pZCI6bnVsbCwiaXNfYWRfcGxheWluZyI6ZmFsc2UsImxvZ2dlZF9pbiI6dHJ1ZSwibG9naW4iOiJwMzNwbyIsImxpdmUiOnRydWUsIm1zZV9zdXBwb3J0Ijp0cnVlLCJtdXRlZCI6ZmFsc2UsInBhcnRuZXIiOnRydWUsInBsYXlfc2Vzc2lvbl9pZCI6IjYxNGMzZTA3MTliYjgwZTljNTkxOGQ3YzAxMGVlMTcyIiwicGxheWJhY2tfZ2F0ZWQiOmZhbHNlLCJwbGF5ZXIiOiJzaXRlIiwicGxheWVyX3NpemVfbW9kZSI6InRoZWF0cmUgbW9kZSIsInN0YWZmIjpmYWxzZSwic3Vic2NyaWJlciI6dHJ1ZSwidHVyYm8iOmZhbHNlLCJ1c2VyX2lkIjo0NTc0MTM1MDcsInZpZXdlcl9leGVtcHRpb25fcmVhc29uIjpudWxsLCJ2b2x1bWUiOjAuMzQwMDAwMDAzNTc2Mjc4Nywic3Vic2NyaXB0aW9uX3Vwc2VsbF9zaG93biI6ZmFsc2UsImFkX2ltcHJlc3Npb25zX2luX2NoYW5uZWxfY2FjaGVkIjowLCJiZW5jaG1hcmtfc2Vzc2lvbl9pZCI6Ijg4YzQ5YWQ1Y2JkMGFkMGMiLCJjbGllbnRfYnVpbGRfaWQiOiI5YmMwMWVjZS0xODA5LTQzZTAtOWVhMy1kNzY3ZGRlYzQ4MTYiLCJkaXN0aW5jdF9pZCI6InZ1WVRVM0FqTWNiMXpBcFZHS1Zkajh4TUdLbXlYT3BqIiwib3NfbmFtZSI6Im1hY09TIiwib3NfdmVyc2lvbiI6IjEwLjE1LjciLCJ1c2VyX2FnZW50IjoiTW96aWxsYS81LjAgKE1hY2ludG9zaDsgSW50ZWwgTWFjIE9TIFggMTBfMTVfNykgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzg5LjAuNDM4OS45MCBTYWZhcmkvNTM3LjM2IiwiY2xpZW50X2FwcCI6InR3aWxpZ2h0In19XQ==
+```
 
-In the project directory, you can run:
+```json
+[
+  {
+    "event": "minute-watched",
+    "properties": {
+      "app_session_id": "5b9156bbb2a969c5",
+      "app_version": "9bc01ece-1809-43e0-9ea3-d767ddec4816",
+      "device_id": "vuYTU3AjMcb1zApVGKVdj8xMGKmyXOpj",
+      "domain": "twitch.tv",
+      "host": "www.twitch.tv",
+      "platform": "web",
+      "preferred_language": "ro",
+      "referrer_host": "www.twitch.tv",
+      "referrer_url": "",
+      "received_language": "fr",
+      "tab_session_id": "aca006aac8416e4e",
+      "batch_time": 1616075165,
+      "url": "https://www.twitch.tv/posty",
+      "client_time": 1616075164.857,
+      "benchmark_server_id": "eaf1beb1bd244227b184173b64f8e904",
+      "bornuser": false,
+      "browser": "5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36",
+      "browser_family": "chrome",
+      "browser_version": "89.0",
+      "collapse_right": false,
+      "collapse_left": false,
+      "localstorage_device_id": "cce4c064e595c47d",
+      "location": "channel",
+      "page_session_id": "e9588d825e84e127",
+      "referrer": "https://www.twitch.tv/directory/following",
+      "referrer_domain": "www.twitch.tv",
+      "session_device_id": "vuYTU3AjMcb1zApVGKVdj8xMGKmyXOpj",
+      "theme": "dark",
+      "viewport_height": 833,
+      "viewport_width": 1301,
+      "content": "video_title",
+      "content_index": 2,
+      "medium": "following_directory",
+      "channel": "posty",
+      "channel_id": "135377687",
+      "game": "Rust",
+      "hosted_game": null,
+      "is_following": true,
+      "is_live": true,
+      "language": "fr",
+      "average_bitrate": 8448878,
+      "backend": "mediaplayer",
+      "broadcast_id": "41061787517",
+      "buffer_empty_count": 0,
+      "cluster": "ams02",
+      "core_version": "1.3.0-twitch.web.1-e475f8a4",
+      "current_bitrate": 8887686,
+      "current_fps": 62,
+      "decoded_frames": 3603,
+      "dropped_frames": 5,
+      "estimated_bandwidth": 279509285,
+      "frame_variance": 341,
+      "hidden": false,
+      "hls_latency_broadcaster": 1836,
+      "hls_latency_ingest": 1906,
+      "live": true,
+      "low_latency": true,
+      "manifest_cluster": "ams02",
+      "manifest_node": "video-weaver.ams02",
+      "manifest_node_type": "weaver_cluster",
+      "minutes_logged": 132,
+      "muted": false,
+      "node": "video-edge-c684ec.ams02",
+      "origin_dc": "cmh01",
+      "os_name": "macOS",
+      "os_version": "10.15.7",
+      "play_session_id": "614c3e0719bb80e9c5918d7c010ee172",
+      "playback_rate": 1,
+      "player": "site",
+      "player_state": "Playing",
+      "protocol": "HLS",
+      "ptb": 0,
+      "quality": "936p60 (source)",
+      "rendered_frames": 3598,
+      "seconds_offset": 9.558099,
+      "serving_id": "86075463b2914dad9c2fbd7311aeaa1a",
+      "sink_buffer_size": 1.6573439836502075,
+      "stream_format": "chunked",
+      "time": 1616075164.848,
+      "transcoder_type": "2017TranscodeQS_V2",
+      "transport_download_bytes": 65875200,
+      "transport_download_duration": 60248,
+      "transport_first_byte_latency": 734,
+      "transport_segment_duration": 62484,
+      "transport_segments": 15,
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36",
+      "vid_display_height": 833,
+      "vid_display_width": 1265,
+      "vid_height": 936,
+      "vid_width": 1664,
+      "video_buffer_size": 1.809688,
+      "video_session_id": "1131418892300749916",
+      "volume": 0.3400000035762787,
+      "battery_percent": 1,
+      "is_pbyp": false,
+      "squad_stream_id": null,
+      "squad_stream_session_id": null,
+      "squad_stream_presentation_id": null,
+      "is_mod": false,
+      "time_spent_hidden": 445576,
+      "consent_comscore_ok": true,
+      "app_fullscreen": false,
+      "autoplayed": true,
+      "backend_version": "1.3.0-twitch.web.1-e475f8a4",
+      "broadcaster_software": "unknown_rtmp",
+      "captions_enabled": false,
+      "chat_visible": true,
+      "chat_visibility_status": "visible",
+      "content_mode": "live",
+      "host_channel": null,
+      "host_channel_id": null,
+      "is_ad_playing": false,
+      "logged_in": true,
+      "login": "p33po",
+      "mse_support": true,
+      "partner": true,
+      "playback_gated": false,
+      "player_size_mode": "theatre mode",
+      "staff": false,
+      "subscriber": true,
+      "turbo": false,
+      "user_id": 457413507,
+      "viewer_exemption_reason": null,
+      "subscription_upsell_shown": false,
+      "ad_impressions_in_channel_cached": 0,
+      "benchmark_session_id": "88c49ad5cbd0ad0c",
+      "client_build_id": "9bc01ece-1809-43e0-9ea3-d767ddec4816",
+      "distinct_id": "vuYTU3AjMcb1zApVGKVdj8xMGKmyXOpj",
+      "client_app": "twilight"
+    }
+  },
+  {
+    "event": "extensions_active_per_minute_watched",
+    "properties": {
+      "app_session_id": "5b9156bbb2a969c5",
+      "app_version": "9bc01ece-1809-43e0-9ea3-d767ddec4816",
+      "device_id": "vuYTU3AjMcb1zApVGKVdj8xMGKmyXOpj",
+      "domain": "twitch.tv",
+      "host": "www.twitch.tv",
+      "platform": "web",
+      "preferred_language": "ro",
+      "referrer_host": "www.twitch.tv",
+      "referrer_url": "",
+      "received_language": "fr",
+      "tab_session_id": "aca006aac8416e4e",
+      "batch_time": 1616075165,
+      "url": "https://www.twitch.tv/posty",
+      "client_time": 1616075164.858,
+      "benchmark_server_id": "eaf1beb1bd244227b184173b64f8e904",
+      "bornuser": false,
+      "browser": "5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36",
+      "browser_family": "chrome",
+      "browser_version": "89.0",
+      "collapse_right": false,
+      "collapse_left": false,
+      "localstorage_device_id": "cce4c064e595c47d",
+      "location": "channel",
+      "page_session_id": "e9588d825e84e127",
+      "referrer": "https://www.twitch.tv/directory/following",
+      "referrer_domain": "www.twitch.tv",
+      "session_device_id": "vuYTU3AjMcb1zApVGKVdj8xMGKmyXOpj",
+      "theme": "dark",
+      "viewport_height": 833,
+      "viewport_width": 1301,
+      "content": "video_title",
+      "content_index": 2,
+      "medium": "following_directory",
+      "channel": "posty",
+      "channel_id": "135377687",
+      "game": "Rust",
+      "hosted_game": null,
+      "is_following": true,
+      "is_live": true,
+      "language": "fr",
+      "active_extensions": "[{\"extension_id\":\"d4uvtfdr04uq6raoenvj7m86gdk16v\",\"extension_anchor\":\"component\",\"extension_slot\":\"extension-component-1\"}]",
+      "is_pbyp": false,
+      "squad_stream_id": null,
+      "squad_stream_session_id": null,
+      "squad_stream_presentation_id": null,
+      "app_fullscreen": false,
+      "autoplayed": true,
+      "backend_version": "1.3.0-twitch.web.1-e475f8a4",
+      "broadcast_id": "41061787517",
+      "broadcaster_software": "unknown_rtmp",
+      "captions_enabled": false,
+      "chat_visible": true,
+      "chat_visibility_status": "visible",
+      "content_mode": "live",
+      "core_version": "1.3.0-twitch.web.1-e475f8a4",
+      "host_channel": null,
+      "host_channel_id": null,
+      "is_ad_playing": false,
+      "logged_in": true,
+      "login": "p33po",
+      "live": true,
+      "mse_support": true,
+      "muted": false,
+      "partner": true,
+      "play_session_id": "614c3e0719bb80e9c5918d7c010ee172",
+      "playback_gated": false,
+      "player": "site",
+      "player_size_mode": "theatre mode",
+      "staff": false,
+      "subscriber": true,
+      "turbo": false,
+      "user_id": 457413507,
+      "viewer_exemption_reason": null,
+      "volume": 0.3400000035762787,
+      "subscription_upsell_shown": false,
+      "ad_impressions_in_channel_cached": 0,
+      "benchmark_session_id": "88c49ad5cbd0ad0c",
+      "client_build_id": "9bc01ece-1809-43e0-9ea3-d767ddec4816",
+      "distinct_id": "vuYTU3AjMcb1zApVGKVdj8xMGKmyXOpj",
+      "os_name": "macOS",
+      "os_version": "10.15.7",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36",
+      "client_app": "twilight"
+    }
+  }
+]
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
